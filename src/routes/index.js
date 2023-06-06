@@ -4,6 +4,7 @@ import { codeSuccess, logInfo } from "../utils";
 // rutas
 import authRouter from "./auth";
 import categoryRouter from "./category";
+import toolsRouter from "./tools";
 
 // intancia de express y root router
 const server = express();
@@ -19,5 +20,6 @@ rootRouter.get("/", (req, res) => {
 server.use("/", rootRouter);
 server.use("/auth", authRouter);
 server.use("/categories", categoryRouter);
+server.use("/tools", toolsRouter);
 
 export default server;

@@ -6,13 +6,17 @@ import dotenv from "dotenv";
 // imports
 import rootRouter from "../routes";
 import { logSuccess } from "../utils";
+import bodyParser from "body-parser";
 
 const server = express();
 dotenv.config();
 
-// middlewares
 // Midlewares
+server.use(express.urlencoded({ extended: true, limit: "50mb" }));
+server.use(bodyParser.urlencoded({ extended: false }));
+server.use(bodyParser.json());
 server.use(express.json());
+server.use(express.static("public"));
 server.use(
   cors({
     origin: "http://localhost:3000",
@@ -20,9 +24,6 @@ server.use(
     credentials: true,
   })
 );
-
-// server.use(express.urlencoded({ extended: true, limit: "50mb" }));
-// server.use(express.static("public"));
 
 // ruta principal
 server.use("/api", rootRouter);

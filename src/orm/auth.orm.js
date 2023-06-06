@@ -35,7 +35,7 @@ export const createUserOrm = async (user) => {
       },
       process.env.SECRET_KEY || "MISECRETO",
       {
-        expiresIn: "48h",
+        expiresIn: "7d",
       }
     );
 

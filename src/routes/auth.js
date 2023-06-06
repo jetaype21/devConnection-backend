@@ -1,9 +1,11 @@
 import express from "express";
 import { codeSuccess, logInfo } from "../utils";
 import authController from "../controllers/auth.controller";
+import bodyParser from "body-parser";
 
 const authRouter = express.Router();
 const { createUser } = authController();
+let jsonParser = bodyParser.json();
 
 authRouter
   .route("/")
@@ -12,8 +14,8 @@ authRouter
       message: "Estas en oauth",
     });
   })
-  .post(async (req, res) => {
-    // console.log(req.body);
+  .post(jsonParser, async (req, res) => {
+    console.log(req.body);
     const user = req?.body;
 
     const response = await createUser(user);
