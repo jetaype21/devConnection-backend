@@ -7,7 +7,10 @@ const { createTools, getAllTools } = toolsController();
 toolsRouter
   .route("/")
   .get(async (req, res) => {
+    console.log("peticion get");
     const response = await getAllTools();
+
+    console.log(response);
 
     return res.status(response.status_code || 200).json({ ...response });
   })

@@ -17,13 +17,14 @@ server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 server.use(express.json());
 server.use(express.static("public"));
-server.use(
-  cors({
-    origin: "http://localhost:3000",
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
-  })
-);
+server.use(cors());
+// server.use(
+//   cors({
+//     origin: "http://192.168.43.25:3000/",
+//     methods: "GET,POST,PUT,DELETE",
+//     credentials: true,
+//   })
+// );
 
 // ruta principal
 server.use("/api", rootRouter);
