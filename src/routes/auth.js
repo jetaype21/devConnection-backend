@@ -15,7 +15,6 @@ authRouter
     });
   })
   .post(jsonParser, async (req, res) => {
-    console.log(req.body);
     const user = req?.body;
 
     const response = await createUser(user);

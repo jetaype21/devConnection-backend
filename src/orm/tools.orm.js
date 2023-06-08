@@ -12,7 +12,6 @@ export const createToolsOrm = async (tools) => {
       .create(tools)
       .then((tools) => (data = tools))
       .catch((err) => {
-        console.log("error; ", err);
         error = err;
       });
 
@@ -25,7 +24,6 @@ export const createToolsOrm = async (tools) => {
       data,
     };
   } catch (error) {
-    console.log(error);
     return {
       status_code: codeErrorInternal,
       error_message: `${error || "Ocurrio un error al crear categorias"}`,
